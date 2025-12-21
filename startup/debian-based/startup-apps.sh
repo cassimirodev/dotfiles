@@ -33,6 +33,7 @@ sudo apt install -y openjdk-17-jdk
 
 log "Instalando aplicações de usuário via Flatpak (Isso vai demorar)..."
 
+# Caso eu precise adicionar novos aplicativos, basta pegar o ID no flathub
 APPS=(
     "com.spotify.Client"
     "com.discordapp.Discord"
