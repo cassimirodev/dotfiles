@@ -19,7 +19,7 @@ sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-DISTRO_CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+DISTRO_CODENAME=$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
 
 log "Adicionando repositório (Versão: $DISTRO_CODENAME)..."
 echo \
