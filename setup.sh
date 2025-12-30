@@ -24,11 +24,11 @@ if [ -f /etc/debian_version ]; then
     ./installers/debian/docker.sh
 
     log "Iniciando instalação de Apps e Dependências..."
-    ./installers/debian/apps.sh
+    ./installers/debian/base.sh
 
 elif [ -f /etc/arch-release ]; then
     DISTRO="arch"
-    warn "Sistema Arch Linux detectado (Funcionalidade limitada)."
+    warn "Sistema Arch Linux detectado (Não implementado)."
 else
     error "Sistema não suportado."
     exit 1
