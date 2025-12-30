@@ -45,7 +45,7 @@ APPS=(
 
 for app in "${APPS[@]}"; do
     log "Instalando $app..."
-    flatpak install flathub "$app" -y
+    sudo flatpak install flathub "$app" -y
 done
 
 log "Realizando limpeza de pacotes desnecessários..."
