@@ -174,7 +174,7 @@ fc-cache -fv
 
 ## 📝 Notas
 
-- Este projeto está configurado para o usuário `cassimirodev` por padrão. Ajuste as configurações em `configs/git.sh` conforme necessário.
+- Este projeto está configurado para o usuário `cassimirodev` por padrão. **Antes de usar, edite `configs/git.sh`** para ajustar seu nome de usuário e email do Git.
 - O suporte para Arch Linux está planejado mas ainda não implementado.
 - Alguns pacotes requerem confirmação durante a instalação.
 
