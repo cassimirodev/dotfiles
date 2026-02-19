@@ -171,10 +171,6 @@ fc-cache -fv
 - O suporte para Arch Linux está planejado mas ainda não implementado.
 - Alguns pacotes requerem confirmação durante a instalação.
 
-## Contribuindo
-
-Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias!
-
 ## Licença
 
 This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
