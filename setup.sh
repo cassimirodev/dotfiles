@@ -16,7 +16,17 @@ find . -name "*.sh" -exec chmod +x {} \;
 
 log "Detectando sistema..."
 
-if [ -f /etc/debian_version ]; then
+if [ -f /etc/fedora-release ]; then
+    DISTRO="fedora"
+    info "Sistema Fedora detectado."
+
+    log "Iniciando instalação do Podman..."
+    ./installers/fedora/podman.sh
+
+    log "Iniciando instalação de Apps e Dependências..."
+    ./installers/fedora/base.sh
+
+elif [ -f /etc/debian_version ]; then
     DISTRO="debian"
     info "Sistema Debian/Ubuntu detectado."
 
@@ -42,6 +52,9 @@ log "Iniciando configurações universais..."
 ./configs/git.sh
 ./configs/ssh.sh
 
+log "Configurando ZRAM (swap comprimido)..."
+./configs/zram.sh
+
 
 echo -e "\n${BLUE}--- SELEÇÃO DE SHELL ---${NC}"
 echo "Qual terminal você deseja configurar como padrão?"
@@ -57,6 +70,9 @@ case $SHELL_OPT in
         if [ "$DISTRO" == "debian" ]; then 
             log "Instalando pacote zsh..."
             sudo apt install -y zsh
+        elif [ "$DISTRO" == "fedora" ]; then
+            log "Instalando pacote zsh..."
+            sudo dnf install -y zsh
         fi
         
         ./configs/zsh.sh
@@ -72,6 +88,9 @@ case $SHELL_OPT in
             sudo apt-add-repository ppa:fish-shell/release-3 -y 2>/dev/null
             sudo apt update 2>/dev/null
             sudo apt install -y fish
+        elif [ "$DISTRO" == "fedora" ]; then
+            log "Instalando pacote fish..."
+            sudo dnf install -y fish
         fi
         
         ./configs/fish.sh
@@ -90,4 +109,4 @@ case $SHELL_OPT in
 esac
 
 log "Setup Finalizado!"
-warn "Se você trocou o shell ou instalou o Docker, faça LOGOUT e LOGIN novamente."
+warn "Se você trocou o shell ou instalou o Docker/Podman, faça LOGOUT e LOGIN novamente."
